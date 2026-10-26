@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ifo"
+version = "0.1.0"
+description = "Imitation from Observation via physics-aware latent trajectory matching (CS 593)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "torch",
+    "mujoco>=3.1,<3.4",  # 3.17 breaks FrankaKitchen-v1 (joint-type assert)
+    "gymnasium>=1.0",
+    "gymnasium-robotics>=1.3",
+    "minari[hf,hdf5]>=0.5",
+    "pyyaml",
+    "imageio",
+]
+
+[project.optional-dependencies]
+# DINOv2 encoder + logging; not needed for the CPU smoke tests
+models = ["timm>=1.0", "wandb"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["ifo*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

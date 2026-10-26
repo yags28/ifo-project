@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Large artifacts live on the shared Google Drive, not in git
+data/
+checkpoints/
+runs/
+wandb/
+outputs/
+*.npz
+*.h5
+*.hdf5
+*.pt
+*.mp4
+*.gif
